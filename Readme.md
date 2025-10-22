@@ -4,7 +4,7 @@ This Gemini backend clone uses Gemini's API and answers user's questions.
 
 ## Deployment Link
 
-http://localhost:3000
+https://gemini-backend-clone-6fzk.onrender.com/
 
 ## Postman API Documentation
 
@@ -70,7 +70,7 @@ Features include JWT authentication with OTP-based verification; users can also 
 
 Users can interact with the Gemini clone and have a daily limit of 5 prompts. Users can upgrade for $30 to get unlimited chats. Payment integration uses Stripe, and a webhook updates the backend. Subscription status can be viewed.
 
-Users can create multiple chatrooms to segregate chats. Caching of chatrooms is done using Redis hashmaps, improving response time from 1.2 s to 20 ms. When a user sends a prompt, an asynchronous task is enqueued and processed by two BullMQ workers.
+Users can create multiple chatrooms to segregate chats. Caching of chatrooms is done using Redis hashmaps, improving response time from 1.3 s to 500 ms. When a user sends a prompt, an asynchronous task is enqueued and processed by two BullMQ workers.
 
 All APIs are tested using Postman. The backend is hosted on Render.
 

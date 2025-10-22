@@ -100,15 +100,15 @@ export const stripeWebhook = async (req: Request, res: Response) => {
             if (existingSubscription)
                 // Update existing
                 await prisma.subscriptions.update({ where: { id: existingSubscription.id }, data: commonDataForUpdate });
+
             else
                 // Create new subscription
                 await prisma.subscriptions.create({ data: { ...commonDataForUpdate, userId } });
         }
-        else if (event.type == "charge.refund.updated" || "customer.subscription.deleted")
+        else if (event.type == "refund.updated" || event.type == "customer.subscription.deleted")
             await prisma.subscriptions.updateMany({ where: { stripeSubId }, data: { plan: "basic", status: "inactive" } })
         else
             console.log(`Unhandled event type ${event.type}`);
-
         res.sendStatus(200)
     } catch (error) {
         console.log(error);
